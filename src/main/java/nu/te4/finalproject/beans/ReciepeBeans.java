@@ -59,12 +59,20 @@ public class ReciepeBeans {
         }
         return null;
     }
-    public List<Recipe> getComm (String name){
+    public List<Recipe> getComm (int id){
         List<Recipe> comm = new ArrayList();
         try (Connection connection = ConnectionFactory.getConnection()){
             System.out.println("Getting commodities");
-            String sql = "SELECT * FROM ";
+            String sql = "SELECT * FROM ";//Help from Daniel
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, id);//Check, i'm unsure
+            ResultSet data = stmt.executeQuery();
+            while (data.next()){
+                
+            }
         } catch (Exception e) {
+            System.out.println("Error in 'getComm()': "+ e.getMessage());
         }
+        return null;
     }
 }

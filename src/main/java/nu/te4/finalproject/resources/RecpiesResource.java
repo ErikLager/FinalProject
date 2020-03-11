@@ -44,5 +44,6 @@ public class RecpiesResource {
     @GET
     public Response getComm (@PathParam("id") int id){
         List<Recipe> comm = finalBeans.getComm(id);
+        return Response.ok(comm).build();
     }
 }
