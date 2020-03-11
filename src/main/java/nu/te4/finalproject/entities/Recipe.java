@@ -5,6 +5,8 @@
  */
 package nu.te4.finalproject.entities;
 
+import java.util.List;
+
 /**
  *
  * @author Te41905
@@ -14,27 +16,15 @@ public class Recipe {
     private String Name;
     private String Picure;
     private String StepGuide;
-    private String [] Commodity;
-    private String [] Amount;
+    private List<String> Commodity;
 
-    public Recipe(String[] Commodity, String[] Amount) {
-        this.Commodity = Commodity;
-        this.Amount = Amount;
-    }
-
-    public Recipe(int Id, String Name, String Picure, String StepGuide) {
+    
+    public Recipe(int Id, String Name, String Picure, String StepGuide, List<String> commodities) {
         this.Id = Id;
         this.Name = Name;
         this.Picure = Picure;
         this.StepGuide = StepGuide;
-    }
-public Recipe(int Id, String Name, String Picure, String StepGuide, String amount, String commodities) {
-        this.Id = Id;
-        this.Name = Name;
-        this.Picure = Picure;
-        this.StepGuide = StepGuide;
-        
-        
+        this.Commodity = commodities;
     }
   
 
@@ -70,19 +60,13 @@ public Recipe(int Id, String Name, String Picure, String StepGuide, String amoun
         this.Picure = Picure;
     }
 
-    public String[] getCommodity() {
+    public List<String> getCommodity() {
         return Commodity;
     }
 
-    public void setCommodity(String[] Commodity) {
+    public void setCommodity(List<String> Commodity) {
         this.Commodity = Commodity;
     }
 
-    public String[] getAmount() {
-        return Amount;
-    }
-
-    public void setAmount(String[] Amount) {
-        this.Amount = Amount;
-    }
+    
 }
