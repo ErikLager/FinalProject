@@ -70,4 +70,22 @@ public class ReciepeBeans {
         }
         return commodities;
     }
+
+    public List<Recipe> randomRecipe() {
+        List<Recipe> recipes = new ArrayList();
+        try ( Connection connection = ConnectionFactory.getConnection()) {
+            String sql = "SELECT name FROM recipes";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet data = stmt.executeQuery();
+            while (data.next()) {
+                System.out.println("Entered while-loop");
+                String n = data.getString("Name");
+                recipes.add(new Recipe(0, n, null, null, null));
+            }
+            return recipes;
+        } catch (Exception e) {
+            System.out.println("Error in 'getRandom()': " + e.getMessage());
+        }
+        return null;
+    }
 }

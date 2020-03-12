@@ -37,14 +37,10 @@ public class RecpiesResource {
         return Response.ok(recipes).build();
     }
     
-//    @EJB
-//    ReciepeBeans commodeties;
-//    
-//    
-//    @Path("/comm/{id}")
-//    @GET
-//    public Response getComm (@PathParam("id") int id){
-//        List<Recipe> comm = finalBeans.getComm(id);
-//        return Response.ok(comm).build();
-//    }
+    @Path("/random")
+    @GET
+    public Response randomRecipe (){
+        List<Recipe> recipes = finalBeans.randomRecipe();
+        return Response.ok(recipes).build();
+    }
 }
