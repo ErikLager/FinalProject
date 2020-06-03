@@ -12,10 +12,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.Stateless;
-import javax.persistence.Id;
-import javax.ws.rs.core.Response;
 import nu.te4.finalproject.backend.ConnectionFactory;
-import nu.te4.finalproject.entities.Ingredience;
 import nu.te4.finalproject.entities.Recipe;
 
 /**
@@ -72,14 +69,19 @@ public class ReciepeBeans {
 
     public List<Recipe> randomRecipe() {
         List<Recipe> recipes = new ArrayList();
+        System.out.println("List Created");
         try ( Connection connection = ConnectionFactory.getConnection()) {
             String sql = "SELECT name FROM recipes";
+            System.out.println("SQL question declared");
             PreparedStatement stmt = connection.prepareStatement(sql);
+            System.out.println("prepared stmt");
             ResultSet data = stmt.executeQuery();
+            System.out.println("Resultset data");
             while (data.next()) {
                 System.out.println("Entered while-loop");
                 String n = data.getString("Name");
                 recipes.add(new Recipe(0, n, null, null, null));
+                System.out.println("List element added");
             }
             return recipes;
         } catch (Exception e) {
