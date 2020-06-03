@@ -54,7 +54,7 @@ public class ConnectionFactory {
             }
         }
         LOGGER.trace("Retrieving connection from DriverManager using string: {}", "jdbc:mysql://localhost/finalproject?user=usr&password=");
-        Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject?user=usr&password=");
+        Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject?recources/properties/username&password=");
         LOGGER.info("Connection retrieved.");
         return connection;
     }

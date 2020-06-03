@@ -17,7 +17,6 @@ import javax.ws.rs.core.Response;
 import nu.te4.finalproject.backend.ConnectionFactory;
 import nu.te4.finalproject.entities.Ingredience;
 import nu.te4.finalproject.entities.Recipe;
-import sun.awt.www.content.image.gif;
 
 /**
  *
