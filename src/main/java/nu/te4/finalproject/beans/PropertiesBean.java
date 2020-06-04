@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nu.te4.finalproject.resources;
+package nu.te4.finalproject.beans;
 
 import java.io.InputStream;
 import java.util.Properties;
