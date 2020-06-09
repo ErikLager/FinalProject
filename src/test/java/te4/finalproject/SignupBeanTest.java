@@ -48,7 +48,7 @@ public class SignupBeanTest {
         String basicAuth = "";
         SignupBean instance = new SignupBean();
         Response expResult = null;
-        Response result = instance.signupUser(basicAuth);
+        String result = instance.signupUser(basicAuth);
         assertEquals(expResult, result);
     }
     
