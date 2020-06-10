@@ -31,12 +31,25 @@ public class SignupBean {
             String un = data.getString("Username");
             String pw = data.getString("Password");
             return id+un+pw;
-//            String hashedPassword = BCrypt.withDefaults().hashToString(12, Credentials.getVerifyer().toCharArray());
-//            stmt.setString(2, hashedPassword);
         } catch (Exception e) {
             System.out.println("Errir in signupUser: " +e.getMessage());
         }
         return null;}
+    
+    
+    public String getVerifiedpWord(String Username, String Password){
+        try (Connection connection = ConnectionFactory.getConnection()){
+            String sql = "SELECT Password from `users` where Username= "+"'"+Username+"'";
+            if (sql == Password){
+                return Username;
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error in getVerified: "+e.getMessage());
+        }
+        return null;
+    }
+    
 
     
 
