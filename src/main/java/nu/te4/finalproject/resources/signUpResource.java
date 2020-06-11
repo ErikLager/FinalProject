@@ -39,7 +39,7 @@ public class signUpResource {
     @POST
     public Response getVerifiedpWord (@PathParam("pword") String pword){
 //        String credentials = signup.signupUser(int ID, String Username, String Oauth_Id, String Password);
-        return Response.ok().build();
+        return Response.ok(pword).build();
     }
     
 }
