@@ -29,7 +29,7 @@ public class signUpResource {
     @Path("create/user")
     @POST
     public Response createUser (Credentials cred){
-        if(signup.createUser(cred) == cred){ //<---- Fix that
+        if(signup.createUser(cred) > 0){ //<---- Fix that
         return Response.status(Response.Status.CREATED).build();
         }else{
                 return Response.status(Response.Status.BAD_REQUEST).build();

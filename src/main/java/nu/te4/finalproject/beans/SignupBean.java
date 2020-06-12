@@ -50,19 +50,23 @@ public class SignupBean {
         return null;
     }
 
-    public ResultSet createUser(Credentials cred) {
+    public int createUser(Credentials cred) {
         try (Connection connection = ConnectionFactory.getConnection()){
             String sql = "INSERT INTO users(ID, Username Password) VALUES (NULL,?,?)";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, cred.getUsername());
             stmt.setString(2, cred.getPassword());
-            ResultSet data = stmt.executeQuery();
-            return data;
+            int rows = stmt.executeUpdate();
+            if (rows == 1){
+                return 1;
+            }
+            
+            
             
         } catch (Exception e) {
             System.out.println("Error in 'createUser()': "+e.getMessage());
         }
-        return null;
+        return 0;
     }
 
     public boolean checkUser(Credentials cred) {
@@ -71,9 +75,12 @@ public class SignupBean {
             String pw = cred.getPassword();
             String sql = "SELECT password from users WHERE username = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(0, un);
+            stmt.setString(0, un); //Check value of response
             ResultSet data = stmt.executeQuery();
-            if (data.equals(pw)){
+            String check = data.getString(1);
+            
+            
+            if (check.equals(pw)){
                 return true;
             }
             
