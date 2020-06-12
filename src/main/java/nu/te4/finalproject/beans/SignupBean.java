@@ -77,7 +77,7 @@ public class SignupBean {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(0, un); //Check value of response
             ResultSet data = stmt.executeQuery();
-            String check = data.getString(1);
+            String check = data.getString("Password");
             
             
             if (check.equals(pw)){
