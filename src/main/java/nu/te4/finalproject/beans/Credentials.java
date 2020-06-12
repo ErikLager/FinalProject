@@ -20,8 +20,18 @@ public class Credentials {
         this.Password = Password;
     }
 
+    
+    /*
+    
+    {
+        ID:1,
+        'username':'Erik',
+        'Password':'tyest'
+    }
+    
+    
+    */
     Credentials() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getID() {

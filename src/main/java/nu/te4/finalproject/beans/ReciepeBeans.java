@@ -89,4 +89,16 @@ public class ReciepeBeans {
         }
         return null;
     }
+    public List<Recipe> addRecipe(){
+        List<Recipe> newrec = new ArrayList();
+        try (Connection connection = ConnectionFactory.getConnection()){
+            String sql = "INSERT INTO `recipes` (`Id`, `Name`, `Picture`, `StepGuide`) VALUES (NULL, ?, ?, ?);";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            newrec.add((Recipe) stmt);
+            
+        } catch (Exception e) {
+            System.out.println("Error in addRecipe():"+e.getMessage());
+        }
+        return null;
+    }
 }

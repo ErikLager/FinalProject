@@ -49,6 +49,36 @@ public class SignupBean {
         }
         return null;
     }
+
+    public int createUser(Credentials cred) {
+        try (Connection connection = ConnectionFactory.getConnection()){
+            String sql = "INSERT INTO users(ID, Username Password) VALUES (NULL,?,?)";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, cred.getUsername());
+            stmt.setString(2, cred.getPassword());
+            return 1;
+            
+        } catch (Exception e) {
+            System.out.println("Error in 'createUser()': "+e.getMessage());
+        }
+        return 0;
+    }
+
+    public boolean checkUser(Credentials cred) {
+        try (Connection connection = ConnectionFactory.getConnection()){
+            String un = cred.getUsername();
+            String pw = cred.getPassword();
+            String sql = "SELECT * from users WHERE username = ?";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            if (sql.equals(pw)){
+                return true;
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error in 'checkUser()': "+e.getMessage());
+        }
+        return false;
+    }
     
 
     

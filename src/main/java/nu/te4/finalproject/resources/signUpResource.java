@@ -11,6 +11,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import nu.te4.finalproject.beans.Credentials;
 import nu.te4.finalproject.beans.SignupBean;
 
 /**
@@ -18,25 +19,34 @@ import nu.te4.finalproject.beans.SignupBean;
  * @author Erik
  */
 
-@Path("verify")
+@Path("")
 @Produces(MediaType.APPLICATION_JSON)
 public class signUpResource {
     
     @EJB
     SignupBean signup;
     
-    @Path("/verify/{uname}")
+    @Path("create/user")
     @POST
-    public Response getVerified (@PathParam("uname") String uname){
-        return Response.ok().build();
+    public Response getVerified (Credentials cred){
+        if(signup.createUser(cred) >0){
+        return Response.status(Response.Status.CREATED).build();
+        }else{
+                return Response.status(Response.Status.BAD_REQUEST).build();
+
+        }
         
     }
     
-    @Path("/verify/{pword}")
+    @Path("/verify/user")
     @POST
-    public Response getVerifiedpWord (@PathParam("pword") String pword){
-//        String credentials = signup.signupUser(int ID, String Username,  String Password);
-        return Response.ok(pword).build();
+    public Response getVerifiedpWord (Credentials cred){
+        if(signup.checkUser(cred)){
+        return Response.ok().build();
+        }else{
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+        
     }
     
 }

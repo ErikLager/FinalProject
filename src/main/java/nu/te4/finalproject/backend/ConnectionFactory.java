@@ -1,8 +1,11 @@
 package nu.te4.finalproject.backend;
 
 import com.mysql.jdbc.Connection;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +40,7 @@ public class ConnectionFactory {
      * @return A connection to the database.
      * @throws SQLException If the database is unavailable.
      */
-    public static Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException, IOException {
         LOGGER.trace("Checking if connection is not initialized.");
         if (!initialized) {
             LOGGER.info("Database connection not initialized. Initializing now.");
@@ -52,7 +55,13 @@ public class ConnectionFactory {
             }
         }
         LOGGER.trace("Retrieving connection from DriverManager using string: {}", "jdbc:mysql://localhost/finalproject?user=usr&password=");
-        Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject?recources/properties/password");
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            InputStream is = classLoader.getResourceAsStream("config.properties");       
+            Properties properties = new Properties();
+            properties.load(is);
+            String username = properties.getProperty("username");
+            String password = properties.getProperty("password");
+        Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject", username, password);
         LOGGER.info("Connection retrieved.");
         return connection;
     }

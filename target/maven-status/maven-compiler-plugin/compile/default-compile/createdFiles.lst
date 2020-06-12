@@ -1,11 +1,9 @@
-nu\te4\finalproject\beans\PropertiesBean.class
 nu\te4\finalproject\backend\JAXRSConfiguration.class
 nu\te4\finalproject\entities\Recipe.class
 nu\te4\finalproject\entities\Ingredience.class
 nu\te4\finalproject\beans\ReciepeBeans.class
 nu\te4\finalproject\resources\signUpResource.class
 nu\te4\finalproject\beans\SignupBean.class
-nu\te4\finalproject\resources\PropertiesRecources.class
 nu\te4\finalproject\backend\ConnectionFactory.class
 nu\te4\finalproject\resources\RecpiesResource.class
 nu\te4\finalproject\beans\Credentials.class
