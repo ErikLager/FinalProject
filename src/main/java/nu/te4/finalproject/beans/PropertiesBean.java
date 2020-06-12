@@ -7,11 +7,13 @@ package nu.te4.finalproject.beans;
 
 import java.io.InputStream;
 import java.util.Properties;
+import javax.ejb.EJB;
 
 /**
  *
  * @author Erik
  */
+@EJB
 public class PropertiesBean {
 
     public String getProp(String key) {

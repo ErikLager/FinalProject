@@ -5,7 +5,6 @@
  */
 package nu.te4.finalproject.resources;
 
-import com.sun.org.glassfish.gmbal.ParameterNames;
 import javax.ejb.EJB;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

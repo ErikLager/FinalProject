@@ -7,9 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * This class contains methods to get a connection to the projects database.
- *
- * @author Adrian Klasson
+ * @author L
  */
 public class ConnectionFactory {
 
@@ -54,7 +52,7 @@ public class ConnectionFactory {
             }
         }
         LOGGER.trace("Retrieving connection from DriverManager using string: {}", "jdbc:mysql://localhost/finalproject?user=usr&password=");
-        Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject?recources/properties/username");
+        Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/finalproject?recources/properties/password");
         LOGGER.info("Connection retrieved.");
         return connection;
     }

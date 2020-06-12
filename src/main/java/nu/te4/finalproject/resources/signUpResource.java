@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package nu.te4.finalproject.resources;
-import java.util.List;
-import javafx.scene.media.Media;
 import javax.ws.rs.Path;
 import javax.ejb.EJB;
 import javax.websocket.server.PathParam;
@@ -13,7 +11,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import nu.te4.finalproject.beans.Credentials;
 import nu.te4.finalproject.beans.SignupBean;
 
 /**
@@ -38,7 +35,7 @@ public class signUpResource {
     @Path("/verify/{pword}")
     @POST
     public Response getVerifiedpWord (@PathParam("pword") String pword){
-//        String credentials = signup.signupUser(int ID, String Username, String Oauth_Id, String Password);
+//        String credentials = signup.signupUser(int ID, String Username,  String Password);
         return Response.ok(pword).build();
     }
     
