@@ -56,10 +56,8 @@ public class SignupBean {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, cred.getUsername());
             stmt.setString(2, cred.getPassword());
-            int rows = stmt.executeUpdate();
-            if (rows == 1){
-                return 1;
-            }
+            return stmt.executeUpdate();
+            
             
             
             
